@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int head,max,n;
+    int req[100];
+    printf("Enter no. of req: ");
+    scanf("%d",&n);
+    printf("Enter: \n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&req[i]);
+    }
+    printf("Head: ");
+    scanf("%d",&head);
+    printf("Max: ");
+    scanf("%d",&max);
+    int h=head;
+    int val=max-1;
+    int thm=0;
+    for(int i=0;i<n;i++)
+    {
+        thm+=abs(head-req[i]);
+        head=req[i];
+    }
+    printf("FCFS: %d\n",thm);
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n-i-1;j++)
+        {
+            if(req[j]>req[j+1])
+            {
+                int temp=req[j];
+                req[j]=req[j+1];
+                req[j+1]=temp;
+            }
+        }
+    }
+    int i=0;
+    thm=(val-req[i])+(val-h);
+    printf("SCAN: %d\n",thm);
+    int s;
+    for(int j=0;j<n;j++)
+    {
+        if(req[j]<h)
+            s=req[j];
+    }
+    thm=val+(val-h)+s;
+     printf("CSCAN: %d\n",thm);
+    
+    
+    
+    
+}
